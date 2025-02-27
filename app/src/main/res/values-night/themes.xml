@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.NewsAppJetpack" parent="android:Theme.Material.Light.NoActionBar" />
-
     <style name="SplashScreenTheme" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#FFFF</item>
+        <item name="windowSplashScreenBackground">#1C1E21</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_logo_splash</item>
         <item name="postSplashScreenTheme">@style/Theme.NewsAppJetpack</item>
     </style>
