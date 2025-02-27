@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="display_small">#000000</color>
     <color name="text_medium">#FF4E4B66</color>
+    <color name="color_button_onboarding">#FF3D3F46</color>
 </resources>
