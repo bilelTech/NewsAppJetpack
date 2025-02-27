@@ -1,4 +1,4 @@
-package com.test.newsappjetpack.ui.onboarding.composables
+package com.test.newsappjetpack.presentation.ui.onboarding.composables
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
@@ -21,8 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.test.newsappjetpack.R
-import com.test.newsappjetpack.ui.onboarding.models.Page
-import com.test.newsappjetpack.ui.theme.NewsAppJetpackTheme
+import com.test.newsappjetpack.presentation.ui.onboarding.models.Page
+import com.test.newsappjetpack.presentation.ui.theme.NewsAppJetpackTheme
 
 @Composable
 fun OnBoardingPage(

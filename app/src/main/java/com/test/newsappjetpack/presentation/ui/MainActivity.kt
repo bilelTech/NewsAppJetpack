@@ -1,4 +1,4 @@
-package com.test.newsappjetpack.ui
+package com.test.newsappjetpack.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,8 +9,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.test.newsappjetpack.ui.onboarding.screens.OnBoardingScreen
-import com.test.newsappjetpack.ui.theme.NewsAppJetpackTheme
+import com.test.newsappjetpack.presentation.ui.onboarding.screens.OnBoardingScreen
+import com.test.newsappjetpack.presentation.ui.theme.NewsAppJetpackTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

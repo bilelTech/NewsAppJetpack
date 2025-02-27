@@ -1,4 +1,4 @@
-package com.test.newsappjetpack.ui.onboarding.composables
+package com.test.newsappjetpack.presentation.ui.onboarding.composables
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
