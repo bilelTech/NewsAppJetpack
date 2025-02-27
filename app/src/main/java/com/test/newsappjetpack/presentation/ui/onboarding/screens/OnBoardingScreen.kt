@@ -1,4 +1,4 @@
-package com.test.newsappjetpack.ui.onboarding.screens
+package com.test.newsappjetpack.presentation.ui.onboarding.screens
 
 import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -24,11 +24,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.test.newsappjetpack.R
-import com.test.newsappjetpack.ui.onboarding.composables.NewsTextButton
-import com.test.newsappjetpack.ui.onboarding.composables.OnBoardingPage
-import com.test.newsappjetpack.ui.onboarding.composables.PageIndicator
-import com.test.newsappjetpack.ui.onboarding.models.Page
-import com.test.newsappjetpack.ui.theme.BlueGray
+import com.test.newsappjetpack.presentation.ui.onboarding.composables.NewsTextButton
+import com.test.newsappjetpack.presentation.ui.onboarding.composables.OnBoardingPage
+import com.test.newsappjetpack.presentation.ui.onboarding.composables.PageIndicator
+import com.test.newsappjetpack.presentation.ui.onboarding.models.Page
+import com.test.newsappjetpack.presentation.ui.theme.BlueGray
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)

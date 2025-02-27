@@ -1,4 +1,4 @@
-package com.test.newsappjetpack.ui.onboarding.composables
+package com.test.newsappjetpack.presentation.ui.onboarding.composables
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -16,10 +16,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.test.newsappjetpack.R
-import com.test.newsappjetpack.ui.onboarding.models.Page
-import com.test.newsappjetpack.ui.theme.BlueGray
-import com.test.newsappjetpack.ui.theme.NewsAppJetpackTheme
-import com.test.newsappjetpack.ui.theme.WhiteGray
+import com.test.newsappjetpack.presentation.ui.onboarding.models.Page
+import com.test.newsappjetpack.presentation.ui.theme.BlueGray
+import com.test.newsappjetpack.presentation.ui.theme.NewsAppJetpackTheme
+import com.test.newsappjetpack.presentation.ui.theme.WhiteGray
 
 
 @Composable

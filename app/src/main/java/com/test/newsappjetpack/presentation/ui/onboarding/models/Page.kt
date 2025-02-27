@@ -1,4 +1,4 @@
-package com.test.newsappjetpack.ui.onboarding.models
+package com.test.newsappjetpack.presentation.ui.onboarding.models
 
 import androidx.annotation.DrawableRes
 
