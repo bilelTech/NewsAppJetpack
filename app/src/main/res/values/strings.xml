@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NewsAppJetpack</string>
+    <string name="page1_title">Get All Types of News</string>
+    <string name="page1_desc">All Type of News From all Trusted Sources For all\nType of People</string>
+    <string name="page2_title">Get The Updated News</string>
+    <string name="page2_desc">Come on, get the latest and updated Articles Easily\nwith us every day</string>
+    <string name="page3_title">Search for News</string>
+    <string name="page3_desc">"You can search for All Type of News From\nall Trusted Sources"</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
 </resources>
