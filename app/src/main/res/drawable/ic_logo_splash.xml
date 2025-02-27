@@ -7,18 +7,18 @@
 
   <path
       android:pathData="M50,180V60H70L110,120V60H130V180H110L70,120V180H50Z"
-      android:fillColor="#1877F2"/>
+      android:fillColor="#FF03A9F4"/>
 
   <path
       android:pathData="M140,180V120H160V140H180V160H160V180H140ZM160,120V100H180V120H160Z"
-      android:fillColor="#1877F2"/>
+      android:fillColor="#FF03A9F4"/>
 
   <path
       android:pathData="M190,180V120H210V140H230V160H210V180H190ZM210,120V100H230V120H210Z"
-      android:fillColor="#1877F2"/>
+      android:fillColor="#FF03A9F4"/>
 
   <path
       android:pathData="M240,180V120H260V140H280V160H260V180H240ZM260,120V100H280V120H260Z"
-      android:fillColor="#1877F2"/>
+      android:fillColor="#FF03A9F4"/>
 
 </vector>
