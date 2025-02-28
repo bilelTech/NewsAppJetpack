@@ -1,6 +1,5 @@
 package com.test.newsappjetpack.presentation.ui.onboarding.screens
 
-import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -19,6 +18,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -27,13 +27,14 @@ import com.test.newsappjetpack.R
 import com.test.newsappjetpack.presentation.ui.onboarding.composables.NewsTextButton
 import com.test.newsappjetpack.presentation.ui.onboarding.composables.OnBoardingPage
 import com.test.newsappjetpack.presentation.ui.onboarding.composables.PageIndicator
+import com.test.newsappjetpack.presentation.ui.onboarding.models.OnBoardingEvent
 import com.test.newsappjetpack.presentation.ui.onboarding.models.Page
 import com.test.newsappjetpack.presentation.ui.theme.BlueGray
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(event: (OnBoardingEvent) -> Unit) {
     val pages = listOf(
         Page(
             title = stringResource(R.string.page1_title),
@@ -84,7 +85,7 @@ fun OnBoardingScreen() {
                 onClick = {
                     scope.launch {
                         //Navigate to the main screen and save a value in datastore preferences
-                        Toast.makeText(context, "Go To Home Screen", Toast.LENGTH_SHORT).show()
+                        event(OnBoardingEvent.SaveAppEntry)
                     }
 
                 }
@@ -100,11 +101,12 @@ fun OnBoardingScreen() {
             // NEXT button
             NewsTextButton(
                 text = stringResource(R.string.next),
+                color = BlueGray,
                 onClick = {
                     scope.launch {
                         if (pagerState.currentPage == 2) {
                             //Navigate to the main screen and save a value in datastore preferences
-                            Toast.makeText(context, "Go To Home Screen", Toast.LENGTH_SHORT).show()
+                            event(OnBoardingEvent.SaveAppEntry)
                         } else {
                             pagerState.animateScrollToPage(
                                 page = pagerState.currentPage + 1
