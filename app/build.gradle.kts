@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     // Splash Screen API
     implementation(libs.androidx.core.splashscreen)
@@ -66,6 +67,9 @@ dependencies {
 
     //Datastore Preferences
     implementation(libs.androidx.datastore.preferences)
+
+    //Compose Navigation
+    implementation(libs.androidx.navigation.compose)
 
     // Unit test & Test Ui
     testImplementation(libs.junit)
