@@ -1,7 +1,9 @@
 package com.test.newsappjetpack.di
 
+import com.test.newsappjetpack.domain.repository.NewsRepository
 import com.test.newsappjetpack.domain.repository.UserRepository
 import com.test.newsappjetpack.domain.usecases.AppEntryUseCases
+import com.test.newsappjetpack.domain.usecases.GetNewsUseCase
 import com.test.newsappjetpack.domain.usecases.ReadAppEntryUseCase
 import com.test.newsappjetpack.domain.usecases.SaveAppEntryUseCase
 import dagger.Module
@@ -32,5 +34,13 @@ class UseCasesModule {
     ): AppEntryUseCases = AppEntryUseCases(
         readAppEntryUseCase = ReadAppEntryUseCase(userRepository),
         saveAppEntryUseCase = SaveAppEntryUseCase(userRepository)
+    )
+
+    @Singleton
+    @Provides
+    fun provideGetNewsUseCase(
+        newsRepository: NewsRepository
+    ): GetNewsUseCase = GetNewsUseCase(
+        newsRepository = newsRepository
     )
 }

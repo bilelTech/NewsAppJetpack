@@ -4,7 +4,6 @@ package com.test.newsappjetpack.presentation.ui.main.newsnavigator
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -22,6 +21,10 @@ import com.test.newsappjetpack.R
 import com.test.newsappjetpack.presentation.navigation.Route
 import com.test.newsappjetpack.presentation.ui.main.newsnavigator.components.BottomNavigationItem
 import com.test.newsappjetpack.presentation.ui.main.newsnavigator.components.NewsBottomNavigation
+import com.test.newsappjetpack.presentation.ui.main.screens.BookMarkScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.DetailsNewsScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.HomeScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.ProfileScreen
 
 @Composable
 fun NewsNavigator() {
@@ -87,18 +90,16 @@ fun NewsNavigator() {
             modifier = Modifier.padding(bottom = bottomPadding)
         ) {
             composable(route = Route.HomeScreen.route) {
-                Text(text = "Home Screen")
+                HomeScreen()
             }
             composable(route = Route.BookMarkScreen.route) {
-                Text(text = "BookMark Screen")
+                BookMarkScreen()
             }
             composable(route = Route.DetailsScreen.route) {
-                Text(text = "Details News Screen")
-
+                DetailsNewsScreen()
             }
             composable(route = Route.ProfileScreen.route) {
-                Text(text = "Profile Screen")
-
+                ProfileScreen()
             }
         }
     }
