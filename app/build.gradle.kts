@@ -21,7 +21,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://newsapi.org/\"")
+            buildConfigField("String", "API_KEY", "\"b385adec3cb0481cb05f06384b6c7860\"")
+        }
         release {
+            buildConfigField("String", "BASE_URL", "\"https://newsapi.org/\"")
+            buildConfigField("String", "API_KEY", "\"b385adec3cb0481cb05f06384b6c7860\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -38,6 +44,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -70,6 +77,15 @@ dependencies {
 
     //Compose Navigation
     implementation(libs.androidx.navigation.compose)
+
+    //retrofit for consume api
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.retrofit.okhttp)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.urlConnection)
+    implementation(libs.retrofit.logging)
+    implementation(libs.gson)
+
 
     // Unit test & Test Ui
     testImplementation(libs.junit)
