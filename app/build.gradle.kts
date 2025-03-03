@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.test.newsappjetpack"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -85,6 +85,14 @@ dependencies {
     implementation(libs.retrofit.urlConnection)
     implementation(libs.retrofit.logging)
     implementation(libs.gson)
+
+    // Paging compose
+    implementation(libs.paging.compose)
+    implementation(libs.paging.runtime)
+    testImplementation(libs.paging.test)
+
+
+
 
 
     // Unit test & Test Ui
