@@ -1,16 +1,19 @@
 package com.test.newsappjetpack.presentation.navigation
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import com.test.newsappjetpack.presentation.ui.main.newsnavigator.NewsNavigator
 import com.test.newsappjetpack.presentation.ui.onboarding.screens.OnBoardingScreen
 import com.test.newsappjetpack.presentation.ui.onboarding.screens.OnBoardingViewModel
 
 @Composable
 fun AppNavigation(startDestination: String) {
+    if (startDestination.isEmpty()) return
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = startDestination) {
@@ -26,19 +29,10 @@ fun AppNavigation(startDestination: String) {
 
         navigation(
             route = Route.NewsNavigation.route,
-            startDestination = Route.HomeScreen.route
+            startDestination = Route.NewsNavigatorScreen.route
         ) {
-            composable(route = Route.HomeScreen.route) {
-
-            }
-            composable(route = Route.SearchScreen.route) {
-
-            }
-            composable(route = Route.BookmarkScreen.route) {
-
-            }
-            composable(route = Route.DetailsScreen.route) {
-
+            composable(route = Route.NewsNavigatorScreen.route) {
+                NewsNavigator()
             }
         }
     }

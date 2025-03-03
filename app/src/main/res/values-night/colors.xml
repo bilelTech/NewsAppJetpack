@@ -3,4 +3,5 @@
     <color name="display_small">#FFFFFFFF</color>
     <color name="text_medium">#FFB0B3B8</color>
     <color name="color_button_onboarding">#FFB0B3B8</color>
+    <color name="body">#4E4B66</color>
 </resources>

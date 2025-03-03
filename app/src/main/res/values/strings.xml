@@ -8,4 +8,7 @@
     <string name="page3_desc">"You can search for All Type of News From\nall Trusted Sources"</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
+    <string name="home_nav_item">Home</string>">
+    <string name="bookmark_nav_item">Bookmark</string>">
+    <string name="profile_nav_item">Profile</string>">
 </resources>
