@@ -5,11 +5,10 @@ sealed class Route (
 ) {
     object OnBoardingScreen : Route("onBoardingScreen")
     object HomeScreen : Route("homeScreen")
-    object SearchScreen : Route("searchScreen")
-    object BookmarkScreen : Route("bookmarkScreen")
+    object BookMarkScreen : Route("bookmarkScreen")
+    object ProfileScreen : Route("profileScreen")
     object DetailsScreen : Route("detailsScreen")
     object AppStartNavigation : Route("appStartNavigation")
     object NewsNavigation : Route("newsNavigation")
     object NewsNavigatorScreen : Route("newsNavigator")
-
 }

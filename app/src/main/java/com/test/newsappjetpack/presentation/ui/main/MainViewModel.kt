@@ -1,5 +1,6 @@
 package com.test.newsappjetpack.presentation.ui.main
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.newsappjetpack.domain.usecases.AppEntryUseCases
@@ -19,7 +20,7 @@ class MainViewModel @Inject constructor(private val appEntryUseCases: AppEntryUs
     private val _splashCondition = MutableStateFlow(true)
     val splashCondition: StateFlow<Boolean> = _splashCondition
 
-    private val _startDestination = MutableStateFlow(Route.AppStartNavigation.route)
+    private val _startDestination = MutableStateFlow("")
     val startDestination: StateFlow<String> = _startDestination
 
     init {
@@ -30,6 +31,7 @@ class MainViewModel @Inject constructor(private val appEntryUseCases: AppEntryUs
                 _startDestination.value = Route.AppStartNavigation.route
             }
             delay(200) //Without this delay, the onBoarding screen will show for a momentum.
+            Log.d("mystartDestination", "startDestination: ${_startDestination.value}")
             _splashCondition.value = false
         }.launchIn(viewModelScope)
     }
