@@ -4,4 +4,9 @@
     <color name="text_medium">#FFB0B3B8</color>
     <color name="color_button_onboarding">#FFB0B3B8</color>
     <color name="body">#4E4B66</color>
+    <color name="text_title">#E4E6EB</color>
+    <color name="shimmer">#414243</color>
+    <color name="placeholder">#DDDDDD</color>
+    <color name="input_background">#3A3B3C</color>
+
 </resources>

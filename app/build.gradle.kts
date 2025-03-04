@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.parcelize.kotlin)
 }
 
 android {
@@ -91,7 +92,8 @@ dependencies {
     implementation(libs.paging.runtime)
     testImplementation(libs.paging.test)
 
-
+    //Coil
+    implementation(libs.coil.compose)
 
 
 

@@ -11,4 +11,8 @@
     <string name="home_nav_item">Home</string>">
     <string name="bookmark_nav_item">Bookmark</string>">
     <string name="profile_nav_item">Profile</string>">
+    <string name="no_news_msg">You have not saved news so far !</string>
+    <string name="unavailable_server_msg">Server Unavailable</string>
+    <string name="unavailable_internet_msg">Internet Unavailable</string>
+    <string name="unknown_error_msg"> Unknown Error</string>
 </resources>
