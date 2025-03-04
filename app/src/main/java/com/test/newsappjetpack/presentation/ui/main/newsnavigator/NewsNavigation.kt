@@ -21,10 +21,10 @@ import com.test.newsappjetpack.R
 import com.test.newsappjetpack.presentation.navigation.Route
 import com.test.newsappjetpack.presentation.ui.main.newsnavigator.components.BottomNavigationItem
 import com.test.newsappjetpack.presentation.ui.main.newsnavigator.components.NewsBottomNavigation
-import com.test.newsappjetpack.presentation.ui.main.screens.BookMarkScreen
-import com.test.newsappjetpack.presentation.ui.main.screens.DetailsNewsScreen
-import com.test.newsappjetpack.presentation.ui.main.screens.HomeScreen
-import com.test.newsappjetpack.presentation.ui.main.screens.ProfileScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.bookmarks.BookMarkScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.home.newsdetails.DetailsNewsScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.home.HomeScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.profile.ProfileScreen
 
 @Composable
 fun NewsNavigator() {
