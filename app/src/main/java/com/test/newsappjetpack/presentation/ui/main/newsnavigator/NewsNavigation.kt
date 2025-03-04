@@ -1,6 +1,5 @@
 package com.test.newsappjetpack.presentation.ui.main.newsnavigator
 
-
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -29,6 +28,7 @@ import com.test.newsappjetpack.presentation.ui.main.screens.home.newsdetails.Det
 import com.test.newsappjetpack.presentation.ui.main.screens.home.HomeScreen
 import com.test.newsappjetpack.presentation.ui.main.screens.home.HomeViewModel
 import com.test.newsappjetpack.presentation.ui.main.screens.profile.ProfileScreen
+import com.test.newsappjetpack.utils.Constants
 
 @Composable
 fun NewsNavigator() {
@@ -107,7 +107,7 @@ fun NewsNavigator() {
                 BookMarkScreen()
             }
             composable(route = Route.DetailsScreen.route) {
-                navController.previousBackStackEntry?.savedStateHandle?.get<NewsUI?>("newsUI")
+                navController.previousBackStackEntry?.savedStateHandle?.get<NewsUI?>(Constants.NEWS_UI_KEY)
                     ?.let { newsUI ->
                         DetailsNewsScreen(
                             news = newsUI,
@@ -135,7 +135,7 @@ private fun navigateToTab(navController: NavController, route: String) {
 }
 
 private fun navigateToDetails(navController: NavController, newsUI: NewsUI){
-    navController.currentBackStackEntry?.savedStateHandle?.set("newsUI", newsUI)
+    navController.currentBackStackEntry?.savedStateHandle?.set(Constants.NEWS_UI_KEY, newsUI)
     navController.navigate(
         route = Route.DetailsScreen.route
     )
