@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.parcelize.kotlin)
 }
 
 android {
@@ -12,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.test.newsappjetpack"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -21,7 +22,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://newsapi.org/\"")
+            buildConfigField("String", "API_KEY", "\"b385adec3cb0481cb05f06384b6c7860\"")
+        }
         release {
+            buildConfigField("String", "BASE_URL", "\"https://newsapi.org/\"")
+            buildConfigField("String", "API_KEY", "\"b385adec3cb0481cb05f06384b6c7860\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -38,6 +45,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -70,6 +78,24 @@ dependencies {
 
     //Compose Navigation
     implementation(libs.androidx.navigation.compose)
+
+    //retrofit for consume api
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.retrofit.okhttp)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.urlConnection)
+    implementation(libs.retrofit.logging)
+    implementation(libs.gson)
+
+    // Paging compose
+    implementation(libs.paging.compose)
+    implementation(libs.paging.runtime)
+    testImplementation(libs.paging.test)
+
+    //Coil
+    implementation(libs.coil.compose)
+
+
 
     // Unit test & Test Ui
     testImplementation(libs.junit)

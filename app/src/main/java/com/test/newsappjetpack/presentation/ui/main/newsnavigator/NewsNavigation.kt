@@ -4,7 +4,6 @@ package com.test.newsappjetpack.presentation.ui.main.newsnavigator
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -13,15 +12,23 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.test.newsappjetpack.R
+import com.test.newsappjetpack.presentation.models.NewsUI
 import com.test.newsappjetpack.presentation.navigation.Route
 import com.test.newsappjetpack.presentation.ui.main.newsnavigator.components.BottomNavigationItem
 import com.test.newsappjetpack.presentation.ui.main.newsnavigator.components.NewsBottomNavigation
+import com.test.newsappjetpack.presentation.ui.main.screens.bookmarks.BookMarkScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.home.newsdetails.DetailsNewsScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.home.HomeScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.home.HomeViewModel
+import com.test.newsappjetpack.presentation.ui.main.screens.profile.ProfileScreen
 
 @Composable
 fun NewsNavigator() {
@@ -87,18 +94,29 @@ fun NewsNavigator() {
             modifier = Modifier.padding(bottom = bottomPadding)
         ) {
             composable(route = Route.HomeScreen.route) {
-                Text(text = "Home Screen")
+                val viewModel: HomeViewModel = hiltViewModel()
+                val news = viewModel.newsState.collectAsLazyPagingItems()
+                HomeScreen(news, navigateToDetails = { newsUI ->
+                    navigateToDetails(
+                        navController = navController,
+                        newsUI = newsUI
+                    )
+                })
             }
             composable(route = Route.BookMarkScreen.route) {
-                Text(text = "BookMark Screen")
+                BookMarkScreen()
             }
             composable(route = Route.DetailsScreen.route) {
-                Text(text = "Details News Screen")
-
+                navController.previousBackStackEntry?.savedStateHandle?.get<NewsUI?>("newsUI")
+                    ?.let { newsUI ->
+                        DetailsNewsScreen(
+                            news = newsUI,
+                            navigateUp = { navController.navigateUp() }
+                        )
+                    }
             }
             composable(route = Route.ProfileScreen.route) {
-                Text(text = "Profile Screen")
-
+                ProfileScreen()
             }
         }
     }
@@ -114,4 +132,11 @@ private fun navigateToTab(navController: NavController, route: String) {
         launchSingleTop = true
         restoreState = true
     }
+}
+
+private fun navigateToDetails(navController: NavController, newsUI: NewsUI){
+    navController.currentBackStackEntry?.savedStateHandle?.set("newsUI", newsUI)
+    navController.navigate(
+        route = Route.DetailsScreen.route
+    )
 }
