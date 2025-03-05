@@ -29,6 +29,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.test.newsappjetpack.R
 import com.test.newsappjetpack.presentation.models.NewsUI
+import com.test.newsappjetpack.presentation.models.Source
 import com.test.newsappjetpack.presentation.ui.theme.NewsAppJetpackTheme
 
 @Composable
@@ -67,7 +68,7 @@ fun NewsItemCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = newsUI.author,
+                    text = newsUI.source.name,
                     style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                     color = colorResource(id = R.color.body)
                 )
@@ -101,6 +102,7 @@ fun NewsCardPreview() {
                 description = "",
                 publishedAt = "12/12/2022 12:34",
                 title = "Her train broke down. Her phone died. And then she met her Saver in a",
+                source = Source("",""),
                 url = "",
                 urlToImage = "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/11787/production/_124395517_bbcbreakingnewsgraphic.jpg"
             )

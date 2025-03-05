@@ -16,6 +16,7 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.test.newsappjetpack.presentation.models.NewsUI
+import com.test.newsappjetpack.presentation.models.Source
 import com.test.newsappjetpack.presentation.ui.main.screens.home.components.NewsList
 import com.test.newsappjetpack.presentation.ui.main.screens.home.components.SearchBar
 import com.test.newsappjetpack.presentation.ui.theme.NewsAppJetpackTheme
@@ -71,6 +72,7 @@ fun HomeScreenPreview() {
         NewsUI(
             author = "Justin Cristophe",
             title = "Coinbase says Apple blocked its last app release on NFTs in Wallet ... - CryptoSaurus",
+            source = Source("",""),
             description = "Coinbase says Apple blocked its last app release on NFTs in Wallet ... - CryptoSaurus",
             content = "We use cookies and data to Deliver and maintain Google services Track outages and protect against spam, fraud, and abuse Measure audience engagement and site statistics to unde… [+1131 chars]",
             publishedAt = "2023-06-16T22:24:33Z",
@@ -79,6 +81,7 @@ fun HomeScreenPreview() {
         ), NewsUI(
             author = "Justin Cristophe",
             title = "Coinbase says Apple blocked its last app release on NFTs in Wallet ... - CryptoSaurus",
+            source = Source("",""),
             description = "Coinbase says Apple blocked its last app release on NFTs in Wallet ... - CryptoSaurus",
             content = "We use cookies and data to Deliver and maintain Google services Track outages and protect against spam, fraud, and abuse Measure audience engagement and site statistics to unde… [+1131 chars]",
             publishedAt = "2023-06-16T22:24:33Z",
