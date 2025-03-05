@@ -38,7 +38,7 @@ fun NewsNavigator() {
             text = stringResource(R.string.home_nav_item)
         ),
         BottomNavigationItem(
-            icon = R.drawable.ic_bookmark,
+            icon = R.drawable.ic_bookmark_outline,
             text = stringResource(R.string.bookmark_nav_item)
         ),
         BottomNavigationItem(
@@ -53,6 +53,13 @@ fun NewsNavigator() {
     val navController = rememberNavController()
     val backStackState = navController.currentBackStackEntryAsState().value
     var selectedItem by rememberSaveable { mutableIntStateOf(0) }
+
+    // Hide the bottom navigation when the user is in the details screen
+    val isBottomBarVisible = remember(key1 = backStackState) {
+        backStackState?.destination?.route == Route.HomeScreen.route ||
+                backStackState?.destination?.route == Route.BookMarkScreen.route ||
+                backStackState?.destination?.route == Route.ProfileScreen.route
+    }
     selectedItem = when (backStackState?.destination?.route) {
         Route.HomeScreen.route -> 0
         Route.BookMarkScreen.route -> 1
@@ -60,32 +67,31 @@ fun NewsNavigator() {
         else -> 0
     }
 
-
     Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
-        //  if (isBottomBarVisible) {
-        NewsBottomNavigation(
-            items = bottomNavigationItems,
-            selectedItem = selectedItem,
-            onItemClick = { index ->
-                when (index) {
-                    0 -> navigateToTab(
-                        navController = navController,
-                        route = Route.HomeScreen.route
-                    )
+        if (isBottomBarVisible) {
+            NewsBottomNavigation(
+                items = bottomNavigationItems,
+                selectedItem = selectedItem,
+                onItemClick = { index ->
+                    when (index) {
+                        0 -> navigateToTab(
+                            navController = navController,
+                            route = Route.HomeScreen.route
+                        )
 
-                    1 -> navigateToTab(
-                        navController = navController,
-                        route = Route.BookMarkScreen.route
-                    )
+                        1 -> navigateToTab(
+                            navController = navController,
+                            route = Route.BookMarkScreen.route
+                        )
 
-                    2 -> navigateToTab(
-                        navController = navController,
-                        route = Route.ProfileScreen.route
-                    )
+                        2 -> navigateToTab(
+                            navController = navController,
+                            route = Route.ProfileScreen.route
+                        )
+                    }
                 }
-            }
-        )
-        //    }
+            )
+        }
     }) {
         val bottomPadding = it.calculateBottomPadding()
         NavHost(
@@ -111,6 +117,7 @@ fun NewsNavigator() {
                     ?.let { newsUI ->
                         DetailsNewsScreen(
                             news = newsUI,
+                            event = {},
                             navigateUp = { navController.navigateUp() }
                         )
                     }
@@ -134,7 +141,7 @@ private fun navigateToTab(navController: NavController, route: String) {
     }
 }
 
-private fun navigateToDetails(navController: NavController, newsUI: NewsUI){
+private fun navigateToDetails(navController: NavController, newsUI: NewsUI) {
     navController.currentBackStackEntry?.savedStateHandle?.set(Constants.NEWS_UI_KEY, newsUI)
     navController.navigate(
         route = Route.DetailsScreen.route
