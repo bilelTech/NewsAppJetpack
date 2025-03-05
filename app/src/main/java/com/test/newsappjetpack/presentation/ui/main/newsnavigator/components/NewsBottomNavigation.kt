@@ -75,7 +75,7 @@ fun NewsBottomNavigationPreview() {
     NewsAppJetpackTheme(dynamicColor = false) {
         NewsBottomNavigation(items = listOf(
             BottomNavigationItem(icon = R.drawable.ic_home, text = "Home"),
-            BottomNavigationItem(icon = R.drawable.ic_bookmark, text = "Bookmark"),
+            BottomNavigationItem(icon = R.drawable.ic_bookmark_outline, text = "Bookmark"),
             BottomNavigationItem(icon = R.drawable.ic_profile, text = "Profile"),
         ), selectedItem = 0, onItemClick = {})
     }
