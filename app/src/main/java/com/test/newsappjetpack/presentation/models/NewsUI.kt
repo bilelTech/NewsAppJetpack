@@ -10,6 +10,7 @@ data class NewsUI(
     val description: String,
     val publishedAt: String?,
     val title: String,
+    val source: Source,
     val url: String,
     val urlToImage: String
 ): Parcelable

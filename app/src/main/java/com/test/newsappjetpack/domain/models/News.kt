@@ -7,6 +7,7 @@ data class News(
     val content: String,
     val description: String,
     val publishedAt: LocalDateTime?,
+    val source: Source,
     val title: String,
     val url: String,
     val urlToImage: String
