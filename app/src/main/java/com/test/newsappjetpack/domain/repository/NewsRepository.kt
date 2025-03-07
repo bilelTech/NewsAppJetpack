@@ -7,4 +7,9 @@ import kotlinx.coroutines.flow.Flow
 interface NewsRepository {
 
     fun getNews(): Flow<PagingData<News>>
+    fun addBookMarks(news: News)
+    suspend fun removeBookMarks(url: String)
+    fun getBookMarks(): Flow<List<News>>
+    fun checkBookMarks(url: String): Flow<Boolean>
+
 }

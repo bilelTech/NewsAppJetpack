@@ -1,6 +1,7 @@
 package com.test.newsappjetpack.data.db.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -20,12 +21,21 @@ interface NewsDao {
 
     // get list of news from database
     @Query("SELECT * FROM news")
-    fun getNews(): Flow<List<NewsEntity>>
+    fun getNews(): List<NewsEntity>
+
+    @Delete
+    suspend fun delete(news: NewsEntity)
+
+    // get news by url from database
+    @Query("SELECT * FROM news WHERE url=:url")
+    fun getNewsByUrl(url: String): NewsEntity?
+
+    // get news by url from database
+    @Query("DELETE FROM news WHERE url=:url")
+    fun deleteNewsByUrl(url: String)
 
 
-    @Query("SELECT * FROM news WHERE id=:id")
-    fun getNewsById(id: Int): NewsEntity?
-
+    // delete all news from database
     @Query("DELETE FROM news")
     fun clear()
 }

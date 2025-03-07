@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -24,9 +25,12 @@ import com.test.newsappjetpack.presentation.navigation.Route
 import com.test.newsappjetpack.presentation.ui.main.newsnavigator.components.BottomNavigationItem
 import com.test.newsappjetpack.presentation.ui.main.newsnavigator.components.NewsBottomNavigation
 import com.test.newsappjetpack.presentation.ui.main.screens.bookmarks.BookMarkScreen
+import com.test.newsappjetpack.presentation.ui.main.screens.bookmarks.BookMarkViewModel
 import com.test.newsappjetpack.presentation.ui.main.screens.home.newsdetails.DetailsNewsScreen
 import com.test.newsappjetpack.presentation.ui.main.screens.home.HomeScreen
 import com.test.newsappjetpack.presentation.ui.main.screens.home.HomeViewModel
+import com.test.newsappjetpack.presentation.ui.main.screens.home.newsdetails.DetailsEvent
+import com.test.newsappjetpack.presentation.ui.main.screens.home.newsdetails.DetailsViewModel
 import com.test.newsappjetpack.presentation.ui.main.screens.profile.ProfileScreen
 import com.test.newsappjetpack.utils.Constants
 
@@ -34,16 +38,13 @@ import com.test.newsappjetpack.utils.Constants
 fun NewsNavigator() {
     val bottomNavigationList = listOf(
         BottomNavigationItem(
-            icon = R.drawable.ic_home,
-            text = stringResource(R.string.home_nav_item)
+            icon = R.drawable.ic_home, text = stringResource(R.string.home_nav_item)
         ),
         BottomNavigationItem(
-            icon = R.drawable.ic_bookmark_outline,
-            text = stringResource(R.string.bookmark_nav_item)
+            icon = R.drawable.ic_bookmark_outline, text = stringResource(R.string.bookmark_nav_item)
         ),
         BottomNavigationItem(
-            icon = R.drawable.ic_profile,
-            text = stringResource(R.string.profile_nav_item)
+            icon = R.drawable.ic_profile, text = stringResource(R.string.profile_nav_item)
         ),
     )
     val bottomNavigationItems = remember {
@@ -56,9 +57,7 @@ fun NewsNavigator() {
 
     // Hide the bottom navigation when the user is in the details screen
     val isBottomBarVisible = remember(key1 = backStackState) {
-        backStackState?.destination?.route == Route.HomeScreen.route ||
-                backStackState?.destination?.route == Route.BookMarkScreen.route ||
-                backStackState?.destination?.route == Route.ProfileScreen.route
+        backStackState?.destination?.route == Route.HomeScreen.route || backStackState?.destination?.route == Route.BookMarkScreen.route || backStackState?.destination?.route == Route.ProfileScreen.route
     }
     selectedItem = when (backStackState?.destination?.route) {
         Route.HomeScreen.route -> 0
@@ -69,31 +68,28 @@ fun NewsNavigator() {
 
     Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
         if (isBottomBarVisible) {
-            NewsBottomNavigation(
-                items = bottomNavigationItems,
+            NewsBottomNavigation(items = bottomNavigationItems,
                 selectedItem = selectedItem,
                 onItemClick = { index ->
                     when (index) {
                         0 -> navigateToTab(
-                            navController = navController,
-                            route = Route.HomeScreen.route
+                            navController = navController, route = Route.HomeScreen.route
                         )
 
                         1 -> navigateToTab(
-                            navController = navController,
-                            route = Route.BookMarkScreen.route
+                            navController = navController, route = Route.BookMarkScreen.route
                         )
 
                         2 -> navigateToTab(
-                            navController = navController,
-                            route = Route.ProfileScreen.route
+                            navController = navController, route = Route.ProfileScreen.route
                         )
                     }
-                }
-            )
+                })
         }
     }) {
         val bottomPadding = it.calculateBottomPadding()
+
+
         NavHost(
             navController = navController,
             startDestination = Route.HomeScreen.route,
@@ -104,22 +100,34 @@ fun NewsNavigator() {
                 val news = viewModel.newsState.collectAsLazyPagingItems()
                 HomeScreen(news, navigateToDetails = { newsUI ->
                     navigateToDetails(
-                        navController = navController,
-                        newsUI = newsUI
+                        navController = navController, newsUI = newsUI
                     )
                 })
             }
             composable(route = Route.BookMarkScreen.route) {
-                BookMarkScreen()
+                val viewModel: BookMarkViewModel = hiltViewModel()
+                viewModel.getBookMarks()
+                val bookMarksList = viewModel.newsState.collectAsState()
+                BookMarkScreen(bookMarksList.value, navigateToDetails = { newsUI ->
+                    navigateToDetails(
+                        navController = navController, newsUI = newsUI
+                    )
+                })
             }
             composable(route = Route.DetailsScreen.route) {
+                val viewModel: DetailsViewModel = hiltViewModel()
                 navController.previousBackStackEntry?.savedStateHandle?.get<NewsUI?>(Constants.NEWS_UI_KEY)
                     ?.let { newsUI ->
-                        DetailsNewsScreen(
-                            news = newsUI,
-                            event = {},
-                            navigateUp = { navController.navigateUp() }
-                        )
+                        viewModel.checkBookMark(newsUI = newsUI)
+                        val isBookMarkState = viewModel.isBookMarkState.collectAsState()
+
+                        DetailsNewsScreen(news = newsUI, isBookMarkState.value, event = { event ->
+                            if (event is DetailsEvent.SaveNews) {
+                                viewModel.addBookMark(newsUI)
+                            } else {
+                                viewModel.deleteBookMark(newsUI)
+                            }
+                        }, navigateUp = { navController.navigateUp() })
                     }
             }
             composable(route = Route.ProfileScreen.route) {
