@@ -2,6 +2,7 @@ package com.test.newsappjetpack.di
 
 import android.app.Application
 import android.content.Context
+import com.test.newsappjetpack.data.db.dao.NewsDao
 import com.test.newsappjetpack.data.remote.NewsApi
 import com.test.newsappjetpack.data.repository.NewsRepositoryImpl
 import com.test.newsappjetpack.data.repository.UserRepositoryImpl
@@ -38,9 +39,10 @@ class RepositoryModule {
     @Provides
     fun provideNewsRepositoryImpl(
         newsApi: NewsApi,
+        newsDao: NewsDao,
         ioDispatcher: CoroutineDispatcher
     ): NewsRepository {
-        return NewsRepositoryImpl(newsApi, ioDispatcher)
+        return NewsRepositoryImpl(newsApi, newsDao, ioDispatcher)
     }
 
     @Singleton

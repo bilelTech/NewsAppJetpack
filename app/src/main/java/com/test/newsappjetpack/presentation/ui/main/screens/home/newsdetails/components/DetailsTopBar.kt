@@ -30,8 +30,10 @@ fun DetailsTopBar(
     onShareClick: () -> Unit,
     onBookMarkClick: () -> Unit,
     onBackClick: () -> Unit,
+    isBookMark: Boolean
 ) {
     var isBookmarked by remember { mutableStateOf(false) }
+    isBookmarked = isBookMark
 
     TopAppBar(
         modifier = modifier.fillMaxWidth(),
@@ -86,8 +88,9 @@ fun DetailsTopBarPreview() {
         DetailsTopBar(
             onShareClick = { /*TODO*/ },
             onBookMarkClick = { /*TODO*/ },
-            onBrowsingClick = {}) {
-
-        }
+            onBrowsingClick = {},
+            onBackClick = {},
+            isBookMark = true
+        )
     }
 }
