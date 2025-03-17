@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
-import com.test.newsappjetpack.presentation.ui.main.newsnavigator.NewsNavigator
+import com.test.newsappjetpack.presentation.ui.dashboard.newsnavigator.NewsNavigator
 import com.test.newsappjetpack.presentation.ui.onboarding.screens.OnBoardingScreen
 import com.test.newsappjetpack.presentation.ui.onboarding.screens.OnBoardingViewModel
 

@@ -15,4 +15,5 @@
     <string name="unavailable_server_msg">Server Unavailable</string>
     <string name="unavailable_internet_msg">Internet Unavailable</string>
     <string name="unknown_error_msg"> Unknown Error</string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>
